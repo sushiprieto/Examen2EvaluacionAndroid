@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cprieto.repeticionexamen2evaluacion.fragment.FragmentAniadir">
+
+    <TextView
+        android:id="@+id/txvAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/txvAdd"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/edtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txvAdd"
+        android:layout_margin="20dp"
+        android:hint="@string/edtNombre" />
+
+    <EditText
+        android:id="@+id/edtEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtNombre"
+        android:layout_margin="20dp"
+        android:hint="@string/edtEdad" />
+
+    <EditText
+        android:id="@+id/edtTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtEdad"
+        android:layout_margin="20dp"
+        android:hint="@string/edtTelefono" />
+
+    <RadioGroup
+        android:id="@+id/rdgSexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtTelefono"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:id="@+id/rdbHombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rdbHombre" />
+
+        <RadioButton
+            android:id="@+id/rdbMujer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rdbMujer" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rdgSexo"
+        android:layout_margin="20dp"
+        android:text="@string/btnAceptar" />
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <!--<fragment
+        android:id="@+id/contenedorEstatico"
+        android:name="com.example.cprieto.repeticionexamen2evaluacion.fragment.FragmentConsultar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="80"
+        tools:layout="@layout/fragment_consultar" />-->
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/contenedorEstatico"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="80" />
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/contenedorDinamico"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="20" />
+
+</LinearLayout>

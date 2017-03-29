@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cprieto.repeticionexamen2evaluacion.fragment.FragmentEditar">
+
+    <TextView
+        android:id="@+id/txvAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/txvEdit"
+        android:textSize="25sp" />
+
+    <Switch
+        android:id="@+id/swEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txvAdd"
+        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/swEditar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnBorrar"
+        android:text="@string/btnBorrar"
+        android:layout_alignBaseline="@+id/swEditar"
+        android:layout_alignBottom="@+id/swEditar"
+        android:layout_toEndOf="@+id/swEditar" />
+
+    <EditText
+        android:id="@+id/edtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/swEditar"
+        android:layout_margin="20dp"
+        android:enabled="false"
+        android:hint="@string/edtNombre" />
+
+    <EditText
+        android:id="@+id/edtEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtNombre"
+        android:layout_margin="20dp"
+        android:enabled="false"
+        android:hint="@string/edtEdad" />
+
+    <EditText
+        android:id="@+id/edtTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtEdad"
+        android:layout_margin="20dp"
+        android:enabled="false"
+        android:hint="@string/edtTelefono" />
+
+    <RadioGroup
+        android:id="@+id/rdgSexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtTelefono"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:id="@+id/rdbHombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rdbHombre"
+            android:enabled="false"/>
+
+        <RadioButton
+            android:id="@+id/rdbMujer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rdbMujer"
+            android:enabled="false"/>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rdgSexo"
+        android:layout_margin="20dp"
+        android:text="@string/btnAceptar"
+        android:enabled="false"/>
+
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<resources>
+
+    <!--APP names-->
+    <string name="app_name">RepeticionExamen2Evaluacion</string>
+    <string name="action_settings">Settings</string>
+
+    <!--TextViews-->
+    <string name="txvAdd">AÑADIR</string>
+    <string name="txvUpdate">ACTUALIZAR</string>
+    <string name="txvEdit">EDITAR</string>
+
+    <!--Buttons-->
+    <string name="btnAceptar">Aceptar</string>
+    <string name="btnAdd">Añadir</string>
+    <string name="btnConsultar">Consultar</string>
+    <string name="btnBorrar">BORRAR</string>
+
+    <!--RadioButtons-->
+    <string name="rdbHombre">Hombre</string>
+    <string name="rdbMujer">Mujer</string>
+
+    <!--Switchs-->
+    <string name="swEditar">Editar</string>
+
+    <!--EditTexts-->
+    <string name="edtNombre">Escriba el nombre</string>
+    <string name="edtEdad">Escriba la edad</string>
+    <string name="edtTelefono">Escriba el telefono</string>
+
+</resources>
