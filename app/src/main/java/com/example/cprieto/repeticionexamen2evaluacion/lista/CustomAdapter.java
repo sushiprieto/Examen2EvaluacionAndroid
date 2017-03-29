@@ -38,13 +38,14 @@ public class CustomAdapter extends ArrayAdapter {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         if (convertView == null) {
-            //inflater = context.getLayoutInflater();
             convertView = inflater.inflate(R.layout.fila_lista, parent, false);
         }
 
-        //Cogemos el nombre del contacto
-        TextView txtNombre = (TextView) convertView.findViewById(R.id.txvNombre);
-        txtNombre.setText(contactos.get(position).getNombre());
+        //Cogemos el nombre y el telefono del contacto
+        TextView txvNombre = (TextView) convertView.findViewById(R.id.txvNombre);
+        TextView txvTelefono = (TextView) convertView.findViewById(R.id.txvTelefono);
+        txvNombre.setText(contactos.get(position).getNombre());
+        txvTelefono.setText("+34 " + contactos.get(position).getTelefono());
 
         return convertView;
     }

@@ -8,6 +8,7 @@
     <string name="txvAdd">AÑADIR</string>
     <string name="txvUpdate">ACTUALIZAR</string>
     <string name="txvEdit">EDITAR</string>
+    <string name="txvSexo">Sexo</string>
 
     <!--Buttons-->
     <string name="btnAceptar">Aceptar</string>

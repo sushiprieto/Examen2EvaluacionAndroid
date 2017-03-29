@@ -1,7 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:float="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.cprieto.repeticionexamen2evaluacion.fragment.FragmentAniadir">
 
     <TextView
@@ -10,50 +15,111 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/txvAdd"
-        android:textSize="25sp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp" />
 
-    <EditText
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:id="@+id/flEdtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txvAdd"
+        float:fletTextAppearance="@style/floatlabelededittext">
+
+        <EditText
+            android:id="@+id/edtNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="Nombre" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <!--<EditText
         android:id="@+id/edtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txvAdd"
         android:layout_margin="20dp"
-        android:hint="@string/edtNombre" />
+        android:hint="@string/edtNombre"
+        android:textColor="@color/primaryText" />-->
 
-    <EditText
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:id="@+id/flEdtEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flEdtNombre"
+        float:fletTextAppearance="@style/floatlabelededittext">
+
+        <EditText
+            android:id="@+id/edtEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="Edad" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <!--<EditText
         android:id="@+id/edtEdad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtNombre"
+        android:layout_below="@id/flEdt"
         android:layout_margin="20dp"
-        android:hint="@string/edtEdad" />
+        android:hint="@string/edtEdad"
+        android:textColor="@color/primaryText" />-->
 
-    <EditText
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:id="@+id/flEdtTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flEdtEdad"
+        float:fletTextAppearance="@style/floatlabelededittext">
+
+        <EditText
+            android:id="@+id/edtTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="Telefono" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <!--<EditText
         android:id="@+id/edtTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/edtEdad"
         android:layout_margin="20dp"
-        android:hint="@string/edtTelefono" />
+        android:hint="@string/edtTelefono"
+        android:textColor="@color/primaryText" />-->
+
+    <TextView
+        android:id="@+id/txvSexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flEdtTelefono"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="@string/txvSexo"
+        android:textColor="@color/colorAccent" />
 
     <RadioGroup
         android:id="@+id/rdgSexo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtTelefono"
+        android:layout_below="@id/txvSexo"
         android:layout_centerHorizontal="true">
 
         <RadioButton
             android:id="@+id/rdbHombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rdbHombre" />
+            android:text="@string/rdbHombre"
+            android:textColor="@color/primaryText" />
 
         <RadioButton
             android:id="@+id/rdbMujer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rdbMujer" />
+            android:text="@string/rdbMujer"
+            android:textColor="@color/primaryText" />
 
     </RadioGroup>
 
@@ -63,6 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/rdgSexo"
         android:layout_margin="20dp"
+        android:background="@color/colorAccent"
         android:text="@string/btnAceptar" />
 
 </RelativeLayout>

@@ -12,6 +12,17 @@
         android:id="@+id/txvNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryText"
+        android:text="carlos"/>
+
+    <TextView
+        android:id="@+id/txvTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondaryText"
+        android:textSize="15sp"
+        android:text="956457845"/>
 
 </LinearLayout>
