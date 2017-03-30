@@ -67,8 +67,8 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
 
             int id = c.getInt(0);
             String nombre = c.getString(1);
-            String telefono = c.getString(2);
-            String edad = c.getString(3);
+            String edad = c.getString(2);
+            String telefono = c.getString(3);
             String sexo = c.getString(4);
 
             Contacto contacto = new Contacto();

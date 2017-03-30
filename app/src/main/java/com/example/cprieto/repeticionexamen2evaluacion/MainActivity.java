@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 else
                     getSupportFragmentManager().beginTransaction().replace(R.id.contenedorDinamico, fConsultar).addToBackStack(null).commit();
                 break;
-
         }
 
     }

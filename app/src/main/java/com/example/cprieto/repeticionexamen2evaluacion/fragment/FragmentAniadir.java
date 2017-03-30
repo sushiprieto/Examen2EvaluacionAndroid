@@ -91,16 +91,16 @@ public class FragmentAniadir extends Fragment implements View.OnClickListener, C
      * Metodo que inserta un nuevo contacto llamando al metodo insertarContacto() de la manejadora de la BBDD
      *
      * @param nombre
-     * @param telefono
      * @param edad
+     * @param telefono
      * @param sexo
      */
-    private void insertar(String nombre, String telefono, String edad, String sexo) {
+    private void insertar(String nombre, String edad, String telefono, String sexo) {
 
         DBAdapter db = new DBAdapter(getActivity());
         db.abrirBD();
 
-        boolean guardado = db.insertarContacto(nombre, telefono, edad, sexo);
+        boolean guardado = db.insertarContacto(nombre, edad, telefono, sexo);
 
         //Si se ha guardado bien reseteamos los eddittext, sino mostramos un error
         if (guardado) {
