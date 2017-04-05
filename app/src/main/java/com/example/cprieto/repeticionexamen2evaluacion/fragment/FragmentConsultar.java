@@ -1,5 +1,6 @@
 package com.example.cprieto.repeticionexamen2evaluacion.fragment;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.cprieto.repeticionexamen2evaluacion.Interfaces.OnListadoContactosSelected;
 import com.example.cprieto.repeticionexamen2evaluacion.MainActivity;
 import com.example.cprieto.repeticionexamen2evaluacion.R;
 import com.example.cprieto.repeticionexamen2evaluacion.bbdd.DBAdapter;
@@ -27,6 +29,8 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
     private ArrayList<Contacto> listaContactos = new ArrayList<>();
 
     private CustomAdapter adapter;
+
+    private OnListadoContactosSelected mListener;
 
     public FragmentConsultar() {
         // Required empty public constructor
@@ -97,4 +101,13 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnListadoContactosSelected) {
+            mListener = (OnListadoContactosSelected) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
 }

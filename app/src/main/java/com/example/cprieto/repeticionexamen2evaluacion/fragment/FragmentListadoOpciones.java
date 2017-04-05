@@ -1,5 +1,6 @@
 package com.example.cprieto.repeticionexamen2evaluacion.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -10,10 +11,13 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import com.example.cprieto.repeticionexamen2evaluacion.Interfaces.OnListadoOpcionSelected;
 import com.example.cprieto.repeticionexamen2evaluacion.MainActivity;
 import com.example.cprieto.repeticionexamen2evaluacion.R;
 
 public class FragmentListadoOpciones extends ListFragment {
+
+    private OnListadoOpcionSelected mListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,4 +49,13 @@ public class FragmentListadoOpciones extends ListFragment {
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnListadoOpcionSelected) {
+            mListener = (OnListadoOpcionSelected) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
 }

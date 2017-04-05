@@ -1,19 +1,26 @@
 package com.example.cprieto.repeticionexamen2evaluacion;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.cprieto.repeticionexamen2evaluacion.Interfaces.OnListadoContactosSelected;
+import com.example.cprieto.repeticionexamen2evaluacion.Interfaces.OnListadoOpcionSelected;
+import com.example.cprieto.repeticionexamen2evaluacion.bbdd.DBAdapter;
 import com.example.cprieto.repeticionexamen2evaluacion.datos.Contacto;
 import com.example.cprieto.repeticionexamen2evaluacion.fragment.FragmentAniadir;
 import com.example.cprieto.repeticionexamen2evaluacion.fragment.FragmentConsultar;
 import com.example.cprieto.repeticionexamen2evaluacion.fragment.FragmentEditar;
 import com.example.cprieto.repeticionexamen2evaluacion.fragment.FragmentListadoOpciones;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements OnListadoContactosSelected, OnListadoOpcionSelected {
 
     FragmentListadoOpciones fOpciones = new FragmentListadoOpciones();
     FragmentAniadir fAniadir = new FragmentAniadir();
     FragmentConsultar fConsultar = new FragmentConsultar();
+    FragmentEditar fEditar = new FragmentEditar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,4 +98,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void OnListadoOpcionSelected(int position) {
+        if (position == 0) {
+            this.getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fEditar).commit();
+        } else {
+            this.getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fConsultar).commit();
+        }
+    }
+
+    @Override
+    public void OnListadoPersonasSelected(int position) {
+        DBAdapter dbAdapter = new DBAdapter(this);
+        List<Contacto> contactos = (List<Contacto>) dbAdapter.getContactos();
+
+        //Contacto c = contactos.get(position);
+
+        this.getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fEditar).commit();
+    }
 }
