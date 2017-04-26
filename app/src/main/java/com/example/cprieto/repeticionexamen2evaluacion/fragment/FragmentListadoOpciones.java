@@ -45,7 +45,7 @@ public class FragmentListadoOpciones extends ListFragment {
     public void onListItemClick(ListView lista, View v, int position, long id) {
 
         //Al hacer click en un elemento de la lista llamamos a un metodo que se encuentra en el MainActivity y le pasamos la posicion
-        ((MainActivity) getActivity()).opcionClick((String) lista.getItemAtPosition(position));
+        mListener.opcionClick((String) lista.getItemAtPosition(position));
 
     }
 
@@ -55,7 +55,7 @@ public class FragmentListadoOpciones extends ListFragment {
         if (context instanceof OnListadoOpcionSelected) {
             mListener = (OnListadoOpcionSelected) context;
         } else {
-            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnListadoOpcionSelected");
         }
     }
 }

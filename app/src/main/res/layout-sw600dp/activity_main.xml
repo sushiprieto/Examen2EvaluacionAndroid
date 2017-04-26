@@ -14,15 +14,15 @@
         tools:layout="@layout/fragment_consultar" />-->
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/contenedorEstatico"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="80" />
-
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/contenedorDinamico"
-        android:layout_width="match_parent"
+        android:id="@+id/fragmentTabletIzq"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="20" />
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragmentTabletDer"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="80" />
 
 </LinearLayout>

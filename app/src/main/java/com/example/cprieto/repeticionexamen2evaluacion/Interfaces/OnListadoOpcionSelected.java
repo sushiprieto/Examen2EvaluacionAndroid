@@ -5,5 +5,5 @@ package com.example.cprieto.repeticionexamen2evaluacion.Interfaces;
  */
 
 public interface OnListadoOpcionSelected {
-    void OnListadoOpcionSelected(int position);
+    void opcionClick(String opcion);
 }

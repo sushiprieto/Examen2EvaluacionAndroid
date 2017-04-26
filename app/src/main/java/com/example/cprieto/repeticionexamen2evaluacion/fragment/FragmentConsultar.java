@@ -4,11 +4,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.cprieto.repeticionexamen2evaluacion.Interfaces.OnListadoContactosSelected;
 import com.example.cprieto.repeticionexamen2evaluacion.MainActivity;
@@ -51,6 +56,8 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
         this.getContactos();
 
         lsvContactos.setOnItemClickListener(this);
+
+        setHasOptionsMenu(true);
 
         return view;
     }
@@ -97,7 +104,7 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
     public void onItemClick(AdapterView<?> lista, View view, int position, long id) {
 
         //Al hacer click en un elemento de la lista llamamos a un metodo que se encuentra en el MainActivity y le pasamos la posicion
-        ((MainActivity) getActivity()).contactoClick((Contacto) lista.getItemAtPosition(position));
+        mListener.contactoClick((Contacto) lista.getItemAtPosition(position));
 
     }
 
@@ -107,7 +114,45 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
         if (context instanceof OnListadoContactosSelected) {
             mListener = (OnListadoContactosSelected) context;
         } else {
-            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnListadoContactosSelected");
         }
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_click_lista, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.context_borrar_dialog:
+
+                Toast.makeText(getActivity(), "Holaa", Toast.LENGTH_SHORT).show();
+
+                break;
+        }
+        return true;
+    }
+
+    /*@Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.menu_click_lista, menu);
+    }*/
+
+    /*@Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.context_borrar_dialog:
+
+                Toast.makeText(getActivity(), "Holaa", Toast.LENGTH_SHORT).show();
+
+                break;
+        }
+        return true;
+
+    }*/
 }

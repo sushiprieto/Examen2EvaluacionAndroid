@@ -22,20 +22,25 @@ public class MainActivity extends AppCompatActivity implements OnListadoContacto
     FragmentConsultar fConsultar = new FragmentConsultar();
     FragmentEditar fEditar = new FragmentEditar();
 
+    private boolean esMovil = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //Cargamos el fragment en funcion si es modo movil o tablet
-        if (findViewById(R.id.contenedorFragment) != null) {
+        if (findViewById(R.id.fragmentMovil) != null) {
 
             fOpciones.setArguments(getIntent().getExtras());
-            getSupportFragmentManager().beginTransaction().add(R.id.contenedorFragment, fOpciones).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragmentMovil, fOpciones).commit();
+            esMovil = true;
+
         } else {
 
             fOpciones.setArguments(getIntent().getExtras());
-            getSupportFragmentManager().beginTransaction().add(R.id.contenedorEstatico, fOpciones).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragmentTabletIzq, fOpciones).commit();
+            esMovil = false;
 
         }
 
@@ -46,21 +51,22 @@ public class MainActivity extends AppCompatActivity implements OnListadoContacto
      *
      * @param opcion
      */
+    @Override
     public void opcionClick(String opcion) {
 
         switch (opcion) {
             case "Añadir":
-                if (findViewById(R.id.contenedorFragment) != null)
-                    getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fAniadir).addToBackStack(null).commit();
+                if (esMovil)
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMovil, fAniadir).addToBackStack(null).commit();
                 else
-                    getSupportFragmentManager().beginTransaction().replace(R.id.contenedorDinamico, fAniadir).addToBackStack(null).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentTabletDer, fAniadir).addToBackStack(null).commit();
                 break;
 
             case "Consultar":
-                if (findViewById(R.id.contenedorFragment) != null)
-                    getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fConsultar).addToBackStack(null).commit();
+                if (esMovil)
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMovil, fConsultar).addToBackStack(null).commit();
                 else
-                    getSupportFragmentManager().beginTransaction().replace(R.id.contenedorDinamico, fConsultar).addToBackStack(null).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentTabletDer, fConsultar).addToBackStack(null).commit();
                 break;
         }
 
@@ -73,10 +79,13 @@ public class MainActivity extends AppCompatActivity implements OnListadoContacto
      */
     public void recargarFragment(String opcionBoton) {
 
+        if (opcionBoton.equals("ACEPTAR") || opcionBoton.equals("BORRAR")){
+            if (esMovil)
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMovil, fConsultar).addToBackStack(null).commit();
+            else
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentTabletDer, fConsultar).addToBackStack(null).commit();
+        }
 
-        if (opcionBoton.equals("ACEPTAR") || opcionBoton.equals("BORRAR"))
-            if (findViewById(R.id.contenedorFragment) != null)
-                getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fConsultar).addToBackStack(null).commit();
     }
 
     /**
@@ -84,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements OnListadoContacto
      *
      * @param c
      */
+    @Override
     public void contactoClick(Contacto c) {
 
         FragmentEditar fEditar = new FragmentEditar();
@@ -93,21 +103,23 @@ public class MainActivity extends AppCompatActivity implements OnListadoContacto
         bundle.putInt("id", c.getId());
         fEditar.setArguments(bundle);
 
-        if (findViewById(R.id.contenedorFragment) != null)
-            getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fEditar).addToBackStack(null).commit();
+        if (esMovil)
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMovil, fEditar).addToBackStack(null).commit();
+        else
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentTabletDer, fEditar).addToBackStack(null).commit();
 
     }
 
-    @Override
+    /*@Override
     public void OnListadoOpcionSelected(int position) {
         if (position == 0) {
             this.getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fEditar).commit();
         } else {
             this.getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fConsultar).commit();
         }
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void OnListadoPersonasSelected(int position) {
         DBAdapter dbAdapter = new DBAdapter(this);
         List<Contacto> contactos = (List<Contacto>) dbAdapter.getContactos();
@@ -115,5 +127,5 @@ public class MainActivity extends AppCompatActivity implements OnListadoContacto
         //Contacto c = contactos.get(position);
 
         this.getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment, fEditar).commit();
-    }
+    }*/
 }
