@@ -1,9 +1,11 @@
 package com.example.cprieto.repeticionexamen2evaluacion.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,6 +39,9 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
 
     private OnListadoContactosSelected mListener;
 
+    int contextMenuIndexClicked = -1;
+
+
     public FragmentConsultar() {
         // Required empty public constructor
     }
@@ -57,7 +62,22 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
 
         lsvContactos.setOnItemClickListener(this);
 
-        setHasOptionsMenu(true);
+        /*
+        ESTO ES UNA FORMA DE HACER EL CLICK LARGO DE LA LISTA
+         */
+        /*lsvContactos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                AlertDialog diaBox = ConfirmacionBorrar();
+                diaBox.show();
+
+                return false;
+            }
+        });*/
+
+        //Añadimos el context menu
+        registerForContextMenu(lsvContactos);
 
         return view;
     }
@@ -118,13 +138,65 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
         }
     }
 
-    @Override
+    private void borrar(int idSele) {
+
+        DBAdapter db = new DBAdapter(getActivity());
+        db.abrirBD();
+
+        boolean deleted = db.borrarContacto(idSele);
+
+        //Si se ha borrado bien
+        if (deleted) {
+
+            Toast.makeText(getActivity(), "Borrado con éxito", Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            Toast.makeText(getActivity(), "No se puede borrar", Toast.LENGTH_SHORT).show();
+
+        }
+
+        db.cerrarBD();
+
+    }
+
+    /*private AlertDialog ConfirmacionBorrar() {
+        AlertDialog confirmacion = new AlertDialog.Builder(getActivity())
+                //set message, title, and icon
+                .setTitle("BORRAR")
+                .setMessage("¿Seguro que quieres borrar el contacto?")
+                //.setIcon(R.drawable.delete)
+
+                .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        //Llamamos al metodo para borrar el contacto
+                        borrar();
+
+                        dialog.dismiss();
+                    }
+
+                })
+
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return confirmacion;
+    }*/
+
+    /*@Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_click_lista, menu);
         super.onCreateOptionsMenu(menu,inflater);
-    }
+    }*/
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.context_borrar_dialog:
@@ -134,25 +206,34 @@ public class FragmentConsultar extends Fragment implements AdapterView.OnItemCli
                 break;
         }
         return true;
-    }
+    }*/
 
-    /*@Override
+    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.menu_click_lista, menu);
-    }*/
+    }
 
-    /*@Override
+    @Override
     public boolean onContextItemSelected(MenuItem item) {
+
+        //Cogemos el index context menu click
+//        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+//        contextMenuIndexClicked = info.position;
+
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int idSele = info.position + 1;
 
         switch (item.getItemId()) {
             case R.id.context_borrar_dialog:
 
-                Toast.makeText(getActivity(), "Holaa", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Holaa: " + idSele, Toast.LENGTH_SHORT).show();
+
+                borrar(idSele);
 
                 break;
         }
         return true;
 
-    }*/
+    }
 }
